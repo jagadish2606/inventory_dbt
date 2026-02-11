@@ -24,7 +24,7 @@ WITH daily_transactions AS (
                     THEN ABS(cost_value_change)
                     ELSE 0
                 END
-            ) AS total_cost_value_cha   nge,
+            ) AS total_cost_value_change,
         SUM(retail_value_change) AS total_retail_value_change,
 
         SUM(
