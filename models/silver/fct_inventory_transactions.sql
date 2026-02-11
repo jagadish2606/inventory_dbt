@@ -1,8 +1,8 @@
 {{
     config(
         materialized = 'view',
-        schema = 'silver',
-        tags = ['silver, cleaned']
+        -- schema = 'silver',
+        tags = ['silver', 'cleaned']
     )
 }}
 

@@ -1,7 +1,7 @@
 {{
     config(
         materialized = 'table',
-        schema = 'silver',
+        -- schema = 'silver',
         tags = ['silver', 'cleaned']
     )
 }}
