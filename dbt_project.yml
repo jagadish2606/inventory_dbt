@@ -1,0 +1,28 @@
+name: inventory_dbt
+version: '1.0.0'
+profile: inventory_dbt
+
+model-paths: ["models"]
+
+models:
+  inventory_dbt:
+
+    staging:
+      +schema: staging
+      +materialized: view
+      +tags: ["staging"]
+
+    silver:
+      +schema: silver
+      +materialized: view
+      +tags: ["silver", "cleaned"]
+
+    gold:
+      +schema: gold
+      +materialized: table
+      +tags: ["gold", "aggregated"]
+
+    business:
+      +schema: business
+      +materialized: view
+      +tags: ["business", "platinum"]

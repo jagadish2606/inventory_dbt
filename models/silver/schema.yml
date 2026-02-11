@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_current_inventory
+    description: "Current inventory snapshot"
+    columns:
+      - name: stock_status
+        description: "Inventory status"
+        tests:
+          - accepted_values:
+              values: ['CRITICALLY_LOW', 'LOW_STOCK', 'OPTIMAL', 'OVERSTOCKED']
+              
+  - name: fct_inventory_transactions
+    description: "Fact table for inventory transactions"
+    columns:
+      - name: transaction_type
+        description: "Type of transaction"
+        tests:
+          - accepted_values:
+              values: ['STOCK_IN', 'SALE', 'RETURN', 'ADJUSTMENT']

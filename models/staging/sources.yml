@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    database: inventory_analytics
+    schema: bronze
+    tables:
+      - name: inventory_transactions_raw
+        description: "Raw inventory transaction data"
+        config:
+          loaded_at_field: created_at
+          freshness:
+            warn_after: {count: 12, period: hour}
+      - name: stores_raw
+        description: "Raw store location data"
+      - name: products_raw
+        description: "Raw product catalog data"

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_daily_inventory_metrics
+    description: "Daily inventory metrics"
+    columns:
+      - name: metric_date
+        description: "Metric date"
+        tests:
+          - not_null
+              
+  - name: dim_store_performance
+    description: "Store performance dimensions"
+    columns:
+      - name: lifetime_profit
+        description: "Total lifetime profit"
+        tests:
+          - not_null

@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_inventory_transactions
+    description: "Staging layer for inventory transactions"
+    columns:
+      - name: transaction_id
+        description: "Unique transaction identifier"
+        tests:
+          - unique
+          - not_null
+      - name: store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_stores')
+              field: store_id
+      - name: product_id
+        description: "Product identifier"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: transaction_type
+        description: "Type of transaction"
+        tests:
+          - accepted_values:
+              values: ['STOCK_IN', 'SALE', 'RETURN', 'ADJUSTMENT']
+      - name: quantity_change
+        description: "Change in quantity"
+        tests:
+          - not_null
+      - name: selling_price
+        description: "Selling price per unit"
+        tests:
+          - not_null
+      
+  - name: stg_products
+    description: "Staging layer for products"
+    columns:
+      - name: product_id
+        description: "Unique product identifier"
+        tests:
+          - unique
+          - not_null
+      - name: retail_price
+        description: "Retail price"
+        tests:
+          - not_null
+      - name: cost_price
+        description: "Cost price"
+        tests:
+          - not_null
+      
+  - name: stg_stores
+    description: "Staging layer for stores"
+    columns:
+      - name: store_id
+        description: "Unique store identifier"
+        tests:
+          - unique
+          - not_null
+      - name: opening_date
+        description: "Store opening date"
+        tests:
+          - not_null

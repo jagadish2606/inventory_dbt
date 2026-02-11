@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: view_daily_sales_dashboard
+    description: "Daily sales dashboard view"
+              
+  - name: view_low_stock_alerts
+    description: "Low stock alerts view"
+    columns:
+      - name: alert_severity
+        description: "Alert severity level"
+        tests:
+          - accepted_values:
+              values: ['URGENT - Order immediately', 'Warning - Reorder soon', 'Monitor']
+      - name: stock_status
+        description: "Stock status"
+        tests:
+          - accepted_values:
+              values: ['CRITICALLY_LOW', 'LOW_STOCK']
