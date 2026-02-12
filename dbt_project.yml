@@ -1,28 +1,45 @@
 name: inventory_dbt
 version: '1.0.0'
+config-version: 2
 profile: inventory_dbt
 
+flags:
+  use_materialization_v2: true
+
 model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
 
 models:
   inventory_dbt:
-
+    +persist_docs:
+      relation: true
+      columns: true
+    
     staging:
-      +schema: default_staging
-      +materialized: view
-      +tags: ["staging"]
-
+      +schema: staging
+      +persist_docs:
+        relation: true
+        columns: true
+    
     silver:
-      +schema: default_silver
-      +materialized: view
-      +tags: ["silver", "cleaned"]
-
+      +schema: silver
+      +persist_docs:
+        relation: true
+        columns: true
+    
     gold:
-      +schema: default_gold
-      +materialized: table
-      +tags: ["gold", "aggregated"]
-
+      +schema: gold
+      +persist_docs:
+        relation: true
+        columns: true
+    
     business:
-      +schema: default_business
-      +materialized: view
-      +tags: ["business", "platinum"]
+      +schema: business
+      +persist_docs:
+        relation: true
+        columns: true
