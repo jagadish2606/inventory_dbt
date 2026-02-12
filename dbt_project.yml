@@ -1,3 +1,9 @@
+name: inventory_dbt
+version: '1.0.0'
+profile: inventory_dbt
+
+model-paths: ["models"]
+
 models:
   inventory_dbt:
 
